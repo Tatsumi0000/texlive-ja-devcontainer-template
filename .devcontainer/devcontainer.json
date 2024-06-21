@@ -1,6 +1,6 @@
 {
     "name": "ubuntu-texlive-ja",
-    "dockerComposeFile": "compose.yml",
+    "dockerComposeFile": "compose.yaml",
     "customizations": {
       "vscode": {
         "extensions": ["james-yu.latex-workshop", "eamodio.gitlens"]
