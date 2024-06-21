@@ -13,7 +13,7 @@
 
 VS Code Remote Developmentの機能を用いて、LaTeX環境を容易に構築するサンプルコードです。
 
-Dockerイメージは、[texlive-ja-devcontainer-template/texlive-ja](tatsumi0000/texlive-ja-devcontainer-template/texlive-ja)を利用しています。
+Dockerイメージは、[texlive-ja-devcontainer-template/texlive-ja](https://github.com/Tatsumi0000/texlive-ja-devcontainer-template/pkgs/container/texlive-ja-devcontainer-template%2Ftexlive-ja)を利用しています。
 
 (**Dockerが必要です**)
 
