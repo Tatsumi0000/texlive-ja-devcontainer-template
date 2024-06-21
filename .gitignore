@@ -5,5 +5,8 @@
 *.synctex.gz
 *.log
 *.pdf
-
+*.bbl
+*.blg
+*.out
+_minted-*
 .DS_Store
