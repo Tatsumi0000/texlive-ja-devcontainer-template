@@ -1,16 +1,23 @@
-\documentclass[uplatex, twocolumn,10pt]{jsarticle}
+\documentclass[uplatex,a4j,12pt,twocolumn]{jsarticle}
 
-\usepackage[dvipdfmx]{graphicx}
+\renewcommand{\baselinestretch}{0.99}
+% 縦横のサイズ調整
+\usepackage[margin=10mm]{geometry}
+\usepackage[dvipdfmx]{graphicx,hyperref}
+\usepackage{pxjahyper}
 \usepackage{latexsym}
 \usepackage{bmpsize}
-\usepackage{url}
+\usepackage{url} % urlを参考文献で出力したいから使う
 \usepackage{comment}
+\usepackage{textcomp} % > などの記号を出力
+\usepackage{here} % 画像を強制的に指定した箇所に出力
+\usepackage{minted} % ソースコードのシンタックスハイライト
+\usepackage{mdframed}
+% 図の上下に微妙な隙間が出るので対策
+\setlength\intextsep{3pt}
+\setlength\textfloatsep{0pt}
 
-\def\Underline{\setbox0\hbox\bgroup\let\\\endUnderline}
-\def\endUnderline{\vphantom{y}\egroup\smash{\underline{\box0}}\\}
-
-\newcommand{\ttt}[1]{\texttt{#1}}
-
+\renewcommand{\listingscaption}{コード}  % キャプション名をコードに変更
 \begin{document}
 
 \title{\bf{\LARGE{Sample of \LaTeX  Document} \\ \Large{\LaTeX のサンプルコード}}}
@@ -29,16 +36,34 @@
 \end{figure}
 
 パソコンの前でご飯を食べることはよくある。パソコンの前でご飯を食べる人のイラストを図\ref{fig:syokuji_computer}に示す。
-このイラストは、規約の範囲内であれば、個人、法人、商用、非商用問わず無料で利用できることでおなじみの、{\bf かわいいフリー素材 いらすとや}\cite{irasutoya}より引用した。
+このイラストは、規約の範囲内であれば、個人、法人、商用、非商用問わず無料で利用できることでおなじみの、{\bf かわいいフリー素材 いらすとや}より引用した。\cite{bib:console}引用です。コード\ref{listings:fastlane}を示す。
+
+\begin{listing}[h]
+    \begin{minted}[breaklines]{ruby}
+  default_platform(:mac)
+  platform :mac do
+    desc "Build macOS App"
+    lane :app_build do
+    ime_path = "/Library/Input Methods"
+      build_mac_app(
+      configuration: "Debug",
+      export_method: "development",
+      scheme: "Raelize",
+      output_directory: "#{ENV["HOME"]}#{ime_path}",
+      clean: true
+      )
+      sh("pkill", "Raelize")
+    end
+  end
+    \end{minted}
+    \caption{fastlaneを使ったビルド自動化}\label{listings:fastlane}
+  \end{listing}
 
 \section{おわりに}
 やっぱり{\bf いらすとや}のイラストはすばらしい。
 
-\begin{thebibliography}{99}
-    \bibitem{irasutoya} いらすとや, last access 2019.6.13 \url{https://www.irasutoya.com/}
-
-
-
-\end{thebibliography}
+%参考文献
+\bibliography{sample} 
+\bibliographystyle{junsrt} 
 
 \end{document}
